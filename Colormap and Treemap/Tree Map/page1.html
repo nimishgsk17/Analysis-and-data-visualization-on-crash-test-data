@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Tree Map Visualization of Montogomery State Crash Reports Dataset - by
+      Jashwanth Kadaru
+    </title>
+
+    <!-- Using Tailwind for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- D3.js script tag -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div
+      class="mt-0 mb-0 pt-16 pb-24 bg-gradient-to-r from-cyan-500 to-blue-500"
+    >
+      <h1
+        class="max-w-fit m-auto mt-2 mb-4 w-3/4 my-font-size-heading1 text-center font-bold text-white"
+      >
+        Understanding Crash Patterns: TreeMap Analysis of Montgomery County Data
+      </h1>
+      <p class="max-w-fit m-auto mt-8 mb-0 text-gray-700 text-xl font-bold">
+        using interactive tree maps for hierarchical & categorical data
+        visualization.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="w-fit m-auto mt-12 mb-0 text-3xl text-gray-800 font-bold">
+        Done by &nbsp;
+      </h4>
+      <span
+        class="block w-fit m-auto mt-1 mb-0 font-bold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500"
+        >Kadaru Jashwanth Reddy &nbsp;
+      </span>
+      <span
+        class="block w-fit m-auto mt-1 mb-2 font-bold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500"
+        >(IMT2021095)</span
+      >
+    </div>
+
+    <div
+      class="page-navigation max-w-screen-sm m-auto mt-24 mb-24 drop-shadow-lg flex justify-around align-center"
+    >
+      <a
+        href="./index.html"
+        class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:bg-blue-800"
+      >
+        Tree Map 1
+      </a>
+      <a
+        href="./page1.html"
+        class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:bg-blue-800"
+      >
+        Tree Map 2
+      </a>
+      <a
+        href="./page2.html"
+        class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:bg-blue-800"
+      >
+        Tree Map 3
+      </a>
+    </div>
+
+    <div class="w-full m-2 mt-0 mb-8 m-auto">
+      <h2
+        class="my-font-style-headings-work-sans max-w-fit m-auto mt-2 mb-12 w-3/4 my-font-size-heading1 font-sans subpixel-antialiased text-center font-bold text-black drop-shadow-lg"
+      >
+        Tree Map 2
+      </h2>
+
+      <div
+        class="transition duration-1000 m-auto mt-8 border-2 border-gray w-3/4 hover:transition hover:duration-1000 hover:drop-shadow-lg hover:transform hover:translate-x-2 hover:-translate-y-2"
+      >
+        <h1
+          class="transition duration-1000 my-font-style-headings-poppins max-w-fit m-auto mt-8 mb-4 w-3/4 my-font-size-heading2 font-sans subpixel-antialiased text-center text-black font-bold hover:transition hover:duration-1000 hover:drop-shadow-lg hover:transform hover:translate-x-1 hover:-translate-y-1"
+        >
+          Story
+        </h1>
+
+        <p
+          class="transition duration-1000 my-font-style-headings-poppins max-w-fit m-auto mt-2 mb-12 w-3/4 text-1xl subpixel-antialiased text-center text-gray-500 hover:transition hover:duration-1000 hover:drop-shadow-lg hover:transform hover:translate-x-1 hover:-translate-y-1"
+        >
+          "In this TreeMap visualization of Montgomery's Crash Report dataset,
+          we gain insights into the distribution of road accidents across
+          different Municipalities, at the top level, we have year-wise
+          distribution, with each tile area corresponding to its size measured
+          by number of accidents that fall under that year. On clickiing on one
+          of the tiles, you will be taken to the next level underneath, which
+          has different tiles corresponding to each of the Municipalities, with
+          their relative size showing the number of accidents contributed by
+          each of them. Overall this is a useful visualization to look at how
+          the accident s frequency varies with respect to the
+          area/municiaplities and how the ranking of Municpalities changed over
+          the years. For simplicity, I have chosen only a subset of
+          Municiaplities given in the dataset, which contribute to most of the
+          accidents taht happened in the state of Maryland."
+
+          <br /><br />
+          <b class="text-xl text-black m-0 mb-2 block"> Interactions : </b>
+          <span class="m-0 mb-1 block text-start pl-16">
+            (1) Click on a tile to go the next level, if a tile has any
+            children.</span
+          >
+          <span class="m-0 mb-1 block text-start pl-16">
+            (2) Hover over the tile to get a tooltip.
+          </span>
+          <span class="m-0 mb-1 block text-start pl-16">
+            (3) The tiles are sorted in order of their sizes.
+          </span>
+          <span class="m-0 mb-1 block text-start pl-16">
+            (4) Their is a color gradient given in the legend below the tree
+            map, that shows the change in magnitude of measure of a tile with
+            color.
+          </span>
+          <span class="m-0 mb-1 block text-start pl-16">
+            (5) Color, order, and size channels re-enforce each other.
+          </span>
+          <br /><br />
+          <b class="text-xl text-black m-0 mb-2 block">
+            Spatial Technique Used :
+          </b>
+          <span class="m-0 mb-1 block text-center pl-16">
+            The spatial techinque used first level is Slice. It arranges the
+            tiles in a top-down layered fashion. For the subsequent level of
+            nodes, pivot tree map (the default) was used. The underlying data
+            structure from which the tree map is made is a hierarchical data
+            structure.
+          </span>
+          <br /><br />
+
+          <b class="text-xl text-black m-0 mb-2 block"> Note:</b>
+          Click on a tile to explore further at each level until the last level.
+          Use the history section provided on the top-right corner of the tree
+          map to go back to previous levels and explore a different section.
+          <br /><br />
+          This was completely implemented from scratch using D3.js. Please do
+          checkout the code.
+          <br /><br />
+
+          <b class="text-2xl text-black m-auto mt-6 mb-6 block w-fit">
+            Columns Used from dataset :
+          </b>
+          <span class="m-auto mb-4 block text-start w-full pl-12">
+            <b>(1) Crash Date:</b> the column represents the date of crash in
+            string format. This was processed to get the year of crash.
+          </span>
+          <span class="m-auto mb-4 block text-start w-full pl-12">
+            <b>(2) Municipality:</b> the column represents the Municipality in
+            which the accident occurred.
+          </span>
+          <span class="m-auto mb-4 block text-start w-full pl-12">
+            <b>(3) Local Case Number:</b> the column represents the case number
+            of teh accident. This is unique to a particular accident. Count
+            total distinct of local case numbers in a category was taken to come
+            up with the appropriate values in tree structure.
+          </span>
+        </p>
+      </div>
+
+      <h2
+        class="transition duration-1000 my-font-style-headings-poppins max-w-fit m-auto mt-28 mb-4 w-3/4 text-3xl font-sans subpixel-antialiased text-center text-gray-900 font-bold tree-map-heading"
+      >
+        Analysing distribution of Vehicle accidents across Municipalities within
+        a given Year, through TreeMap Visualizations
+      </h2>
+      <p
+        class="transition duration-1000 my-font-style-headings-poppins max-w-fit m-auto mt-0 -mb-2 w-3/4 text-2xl font-sans subpixel-antialiased text-center text-gray-800 font-bold tree-map-heading"
+      >
+        (Montgomery Crash Report Dataset)
+      </p>
+
+      <div
+        id="breadcrumb-div"
+        class="w-4/6 m-auto mt-24 mb-0 flex justify-end align-center"
+      >
+        <ol
+          id="breadcrumb-ol"
+          class="flex items-center whitespace-nowrap p-2 pt-0 pb-0 bg-gray-200"
+          aria-label="Breadcrumb"
+        ></ol>
+      </div>
+
+      <!-- class="m-auto mt-8 mb-8 w-fit my-font-style-headings-poppins text-black fs-1 text-center border-2 border-gray-500 p-2" -->
+      <div
+        id="tooltip"
+        style="
+          position: absolute;
+          display: none;
+          background: #fff;
+          padding: 10px;
+          border: 1px solid #ccc;
+        "
+      ></div>
+      <svg
+        id="canvas-container"
+        class="container border-black border-2 m-auto mt-6 mb-10 h-72 min-h-full min-w-fit w-full"
+      ></svg>
+
+      <div
+        id="legend"
+        class="m-auto mt-20 mb-8 w-3/4 my-font-style-headings-poppins text-xl font-bold"
+      >
+        <h1 class="m-auto mt-1 mb-1 w-fit text-center">Legend (Colors) :</h1>
+        <div
+          id="legend-div"
+          class="m-auto mt-2 mb-2 w-5/6 bg-gray-100 p-3 pt-4 pb-4 rounded-sm"
+        >
+          <div
+            style="
+              width: 50%;
+              margin: 0 auto;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <p style="font-size: 0.75rem; font-weight: 400">Min Value</p>
+            <p style="font-size: 0.75rem; font-weight: 400">Max Value</p>
+          </div>
+          <div
+            id="color-div2"
+            style="height: 20px; width: 50%; margin: 0 auto"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-32 mb-0 pt-12 pb-12 bg-gradient-to-r from-cyan-500 to-blue-500"
+    >
+      <h1
+        class="max-w-fit m-auto mt-2 mb-0 w-3/4 text-2xl text-center font-bold text-white"
+      >
+        Made By : Jashwanth Kadaru
+      </h1>
+      <p
+        class="max-w-fit m-auto mt-2 mb-7 text-white text-sm font-bold text-center"
+      >
+        Student ID: IMT2021095 <br />
+        Email Id: JashwanthKadaru095@iiitb.ac.in
+      </p>
+      <p
+        class="max-w-fit m-auto mt-7 mb-0 text-gray-900 text-sm font-bold text-center"
+      >
+        For DV - Assignment 2 <br />
+        Montgomery Crash Report Dataset 2015 Jan -2023 August <br />
+        Team DV_957711
+      </p>
+    </div>
+    <script defer>
+      // originalDataCopy
+      let dataOriginal = undefined
+
+      // current data (Global Copy)
+      let dataGlobal = undefined
+      // current hierarchy (Global Copy)
+      let hierarchyGlobal = undefined
+
+      // history of data snapshots and hierarchy snapshots
+      let hierarchyHistory = []
+      let dataHistory = []
+
+      // a function to update and manage the breadcrumb on top - right corner of Tree Map
+      let makeBreadCrumb = (hierarchy, data) => {
+        if (hierarchy === undefined && data === undefined) {
+          var listItems = document.querySelectorAll('li')
+
+          // Iterate through the li elements
+          listItems.forEach(function (listItem) {
+            // Get the text content of the anchor tag
+            var anchorText = listItem.querySelector('p').textContent
+
+            var validTexts = dataHistory.map((data, index) => {
+              return data.name
+            })
+            // Check if the text content is not in the valid list
+            if (!validTexts.includes(anchorText)) {
+              // Remove the li element
+              listItem.remove()
+            }
+          })
+        } else {
+          if (hierarchy) hierarchyHistory.push(hierarchy)
+          if (data) dataHistory.push(data)
+
+          console.log('hierarchyHistory', hierarchyHistory)
+          console.log('dataHistory', dataHistory)
+
+          breadcrumb = document.getElementById('breadcrumb-ol')
+          console.log('Time 1')
+          // Create a new li element
+          var listItem = document.createElement('li')
+          listItem.className = 'inline-flex items-center'
+
+          // Create an 'a' element
+          var linkElement = document.createElement('p')
+          linkElement.className =
+            'flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-blue-500'
+          // linkElement.href = '#'
+          linkElement.textContent = data.name
+          console.log('Time 2')
+
+          linkElement.addEventListener('click', (event) => {
+            console.log('event listener working 1...')
+            console.log('Event: ', event)
+            let dataName = event.srcElement.innerText
+            console.log('dataName', dataName)
+            let indexOfData
+            let Data = dataHistory.find((data, index) => {
+              if (dataName === data.name) {
+                indexOfData = index
+                console.log('found')
+                return data
+              }
+            })
+            console.log('Time 3')
+            console.log('indexOfData', indexOfData)
+            let newHierarchy = hierarchyHistory[indexOfData]
+            console.log('event listener working 2...')
+            console.log('newHierarchy: ', newHierarchy, 'newData: ', Data)
+            drawTreeMap(dataGlobal, Data, hierarchy, newHierarchy)
+          })
+
+          console.log('Time 4')
+          // Create an 'svg' element
+          var svgElement = document.createElement('svg')
+          svgElement.className =
+            'flex-shrink-0 mx-2 overflow-visible h-4 w-4 text-gray-400 dark:text-neutral-600 dark:text-neutral-600'
+          svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+          svgElement.setAttribute('width', '24')
+          svgElement.setAttribute('height', '24')
+          svgElement.setAttribute('viewBox', '0 0 24 24')
+          svgElement.setAttribute('fill', 'none')
+          svgElement.setAttribute('stroke', 'currentColor')
+          svgElement.setAttribute('stroke-width', '2')
+          svgElement.setAttribute('stroke-linecap', 'round')
+          svgElement.setAttribute('stroke-linejoin', 'round')
+          console.log('Time 5')
+
+          // Create a 'path' element inside the 'svg'
+          var pathElement = document.createElement('path')
+          pathElement.setAttribute('d', 'm9 18 6-6-6-6')
+
+          // Append the 'path' to the 'svg'
+          svgElement.appendChild(pathElement)
+
+          // Append the 'a' and 'svg' to the 'li'
+          listItem.appendChild(linkElement)
+          listItem.appendChild(svgElement)
+
+          console.log('Time 6')
+
+          breadcrumb.appendChild(listItem)
+        }
+      }
+      var root = {}
+      let drawTreeMap = (
+        oldData,
+        Data,
+        oldHierarchy,
+        newHierarchy,
+        resize = false
+      ) => {
+        var canvasDOM = document.getElementById('canvas-container')
+        var width = canvasDOM.clientWidth
+        var height = canvasDOM.clientHeight
+        var canvas = d3.select('#canvas-container')
+        var tooltip = d3.select('#tooltip')
+
+        console.log(canvas)
+
+        if (oldHierarchy) {
+          if (newHierarchy) {
+            let indexOf = hierarchyHistory.indexOf(newHierarchy)
+            hierarchyHistory = hierarchyHistory.filter((hierarchy, index) => {
+              return index <= indexOf
+            })
+            dataHistory = dataHistory.filter((hierarchy, index) => {
+              return index <= indexOf
+            })
+
+            // modified (reduced) histories (treat them as history stacks)
+            console.log('hierarchyHistory', hierarchyHistory)
+            console.log('dataHistory', dataHistory)
+
+            // modifying breadcrumb accordingly
+            if (!resize) makeBreadCrumb(undefined, undefined)
+          }
+
+          // else {
+          //   // makeBreadCrumb
+          //   // makeBreadCrumb(oldHierarchy, oldData)
+          // }
+
+          // Remove existing elements
+          canvas.selectAll('*').remove()
+        }
+
+        // console.log('I am here 1')
+        let hierarchy
+        if (newHierarchy) {
+          // using the already computed hierarchy of new TreeMap
+          hierarchy = newHierarchy
+        } else {
+          // creating new Hierarchy from Data passed
+          hierarchy = d3
+            .hierarchy(Data, (node) => {
+              return node['children']
+            })
+            .sum((node) => {
+              console.log('node:', node)
+              console.log('node value:', node.value)
+              return node.value
+            })
+            .sort((node1, node2) => {
+              return node2['value'] - node1['value']
+            })
+        }
+        hierarchyGlobal = hierarchy
+        dataGlobal = Data
+
+        root['value'] = hierarchy.value
+        root['name'] = hierarchy.data.name
+
+        let createTreeMap = undefined
+
+        if (Data['name'] === 'root') {
+          createTreeMap = d3
+            .treemap()
+            .size([width, height])
+            .tile(d3.treemapSlice)
+        } else {
+          createTreeMap = d3.treemap().size([width, height])
+        }
+
+        //What can I do here to resize the scale such that the plot fits inside the given wioth and height of element
+        console.log('createTreeMap', createTreeMap)
+        createTreeMap(hierarchy)
+
+        console.log('hierarchy:', hierarchy)
+
+        if (!(oldHierarchy && newHierarchy) && !resize) {
+          makeBreadCrumb(hierarchy, Data)
+        }
+
+        let dataTiles = hierarchy.leaves()
+        console.log(dataTiles)
+
+        let directChildren = hierarchy.children
+        console.log('I am here 3')
+
+        // const colorScaleLinear = d3.scaleLinear().range(['#FFEAD2', '#8294C4'])
+        const colorScaleLog = d3.scaleLog().range(['#FFEAD2', '#8294C4'])
+
+        let maxValue = d3.max(directChildren, (data) => data.value)
+        let minValue = d3.min(directChildren, (data) => data.value)
+        // colorScaleLinear.domain([
+        //   0,
+        //   (maxValue - minValue) / (maxValue - minValue),
+        // ])
+        if (minValue === 0) colorScaleLog.domain([minValue + 1, maxValue])
+        else colorScaleLog.domain([minValue, maxValue])
+
+        let colorscaleDiv = document.getElementById('color-div2')
+        if (colorscaleDiv) {
+          console.error('color div not present')
+        } else {
+          colorscaleDiv.style(
+            'background',
+            'linear-gradient(0deg, #FFEAD2, #8294C4)'
+          )
+        }
+        // if (firstTime && false) canvas.selectAll('*').remove()
+        // else {
+        //   canvas.selectAll('text').transition().duration(1000).attr('opacity', 0)
+        //   canvas.selectAll('rect').transition().duration(1000).attr('width', 0).attr('height', 0)
+
+        // }
+        let block = canvas
+          .selectAll('g')
+          .data(directChildren)
+          .enter()
+          .append('g')
+          .attr('transform', (data) => {
+            return 'translate(' + data['x0'] + ', ' + data['y0'] + ')'
+          })
+          .attr('width', (data) => {
+            return data.x1 - data.x0 - 3
+          })
+          .attr('height', (data) => {
+            return data.y1 - data.y0 - 3
+          })
+
+        console.log('I am here 4')
+        // let tiles = canvas.selectAll('rect')
+        // console.log(tiles)
+
+        block
+          .append('rect')
+          .attr('class', 'tile')
+          .attr('fill', (tile) => {
+            return colorScaleLog(tile.value > 0 ? tile.value : 1)
+          })
+          .on('click', function (event, d) {
+            console.log('Event:', event, d)
+            let data = event
+            if (data.children) {
+              console.log('data.children', data.children)
+              for (let child of Data.children) {
+                if (child.name === data.data.name) {
+                  console.log('call to drawTreeMap ...')
+                  console.log(child)
+                  drawTreeMap(Data, child, hierarchy, undefined)
+                }
+              }
+            }
+            console.log('clicked', d)
+          })
+          .attr('width', (data) => {
+            return data.x1 - data.x0 - 2 > 0
+              ? data.x1 - data.x0 - 2
+              : data.x1 - data.x0
+          })
+          .attr('height', (data) => {
+            return data.y1 - data.y0 - 2 > 0
+              ? data.y1 - data.y0 - 2
+              : data.y1 - data.y0
+          })
+          .attr('stroke', 'gray')
+          .attr('stroke-width', '1')
+          .on('mouseover', (data) => {
+            tooltip.transition().style('visibility', 'visible')
+
+            let crashcount = data.value
+            let crashpercent = 100 * (data.value / root['value'])
+
+            tooltip
+              .html(
+                '<b> Name:</b> ' +
+                  data.data.name +
+                  '<br/>' +
+                  '<b> Crash Count: </b>' +
+                  crashcount
+                    .toString()
+                    .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,') +
+                  '<br/>' +
+                  '<b> Crash Percent: </b>' +
+                  crashpercent.toFixed(2).toString() +
+                  ' %' +
+                  '<br/>'
+              )
+              .style('left', d3.event.pageX + 10 + 'px')
+              .style('top', d3.event.pageY - 10 + 'px')
+              .style('display', 'block')
+          })
+          .on('mousemove', (data) => {
+            const tooltip = d3.select('#tooltip')
+            tooltip
+              .style('left', d3.event.pageX + 10 + 'px')
+              .style('top', d3.event.pageY - 10 + 'px')
+          })
+          .on('mouseout', (data) => {
+            tooltip.transition().style('visibility', 'hidden')
+          })
+
+        console.log('I am here 5')
+
+        block
+          .append('text')
+          .append('tspan')
+          .text((data) => {
+            return data['data']['name']
+          })
+          .attr('x', 5)
+          .attr('y', 18)
+
+        block.selectAll('text').append('br')
+        block
+          .selectAll('text')
+          .append('tspan')
+          .text((data) => {
+            return data['value']
+          })
+          .attr('x', 5)
+          .attr('y', 34)
+
+        // .attr('width', (data) => {
+        //   return ((data.x1 - data.x0) * 9) / 10
+        // })
+
+        gElementList = document.querySelectorAll('g')
+        for (let g of gElementList) {
+          g.classList.add(
+            'drop-shadow-2xl',
+            'rounded',
+            'bg-gradient-to-r',
+            'border-2',
+            'border-gray-500'
+          )
+        }
+        rectElementsList = document.querySelectorAll('rect')
+        for (let rect of rectElementsList) {
+          rect.classList.add('drop-shadow-lg', 'rounded-2', 'bg-gradient-to-r')
+        }
+
+        textElementsList = document.querySelectorAll('tspan')
+        console.log('textElementsList:', textElementsList)
+        for (let text of textElementsList) {
+          text.classList.add('drop-shadow-lg', 'tile-font-styles')
+        }
+        // rectList = document.querySelectorAll('rect')
+        // for (let rect of rectList) {
+        //   rect.setAttribute('stroke', 'black')
+        //   rect.setAttribute('stroke-width', '2')
+        // }
+        console.log('block', block)
+        console.log('hierarchyHistory', hierarchyHistory)
+        console.log('dataHistory', dataHistory)
+      }
+
+      function handleResize() {
+        // Re-run the updateTreeMap function on window resize
+        drawTreeMap(undefined, dataGlobal, hierarchyGlobal, undefined, true)
+      }
+
+      // Attach the resize event handler
+      window.addEventListener('resize', handleResize)
+
+      d3.json('./output_new2.json', function (error, data) {
+        if (error) {
+          console.log(error)
+        } else {
+          dataOriginal = data
+          console.log(dataOriginal)
+          root['name'] = dataOriginal['name']
+          root['value'] = dataOriginal['value']
+          drawTreeMap(undefined, dataOriginal, undefined, undefined)
+        }
+      })
+    </script>
+  </body>
+</html>

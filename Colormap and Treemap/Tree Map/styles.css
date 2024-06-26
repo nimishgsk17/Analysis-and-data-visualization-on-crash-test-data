@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+#canvas-container,
+.my-canvas {
+  min-height: 90vh;
+  min-width: 85%;
+  height: fit-content;
+  width: fit-content;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.44);
+}
+
+.my-font-style-headings-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.my-font-style-headings-poppins-white {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.my-font-style-headings-work-sans {
+  font-family: 'Work Sans', sans-serif;
+}
+
+.my-font-size-heading1 {
+  font-size: 2.6rem;
+}
+
+.my-font-size-heading2 {
+  font-size: 2rem;
+}
+
+.rect-class {
+  transition: 0.7s;
+  transform: scale(1);
+}
+
+.rect-class:hover {
+  transition: 0.7s;
+  transform: scale(1.1);
+}
+
+.tile-font-styles,
+tspan,
+text {
+  font-size: 0.75rem;
+  white-space: normal;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  z-index: 2;
+}
+
+rect,
+tspan,
+text {
+  cursor: pointer;
+}
+
+.tree-map-heading {
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.24);
+}
+
+#tooltip {
+  visibility: hidden;
+}
+
+#color-div {
+  background: linear-gradient(to right, #00ffca, #0a4d68);
+}
+
+#color-div2 {
+  background: linear-gradient(to right, #ffead2, #8294c4);
+}
+
+#color-div3 {
+  background: linear-gradient(to right, #ffeadd, #ff6666);
+}
+
+.parent-inputs-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.link {
+  color: blue;
+}

@@ -1,0 +1,176 @@
+{
+    "name": "root",
+    "value": 0,
+    "children": [
+        {
+            "name": "2015",
+            "value": 0,
+            "children": [
+                {
+                    "name": "GAITHERSBURG",
+                    "value": 461
+                },
+                {
+                    "name": "GARRETT PARK",
+                    "value": 2
+                },
+                {
+                    "name": "KENSINGTON",
+                    "value": 29
+                },
+                {
+                    "name": "LAYTONSVILLE",
+                    "value": 2
+                },
+                {
+                    "name": "POOLESVILLE",
+                    "value": 11
+                },
+                {
+                    "name": "ROCKVILLE",
+                    "value": 679
+                },
+                {
+                    "name": "TAKOMA PARK",
+                    "value": 127
+                }
+            ]
+        },
+        {
+            "name": "2017",
+            "value": 0,
+            "children": [
+                {
+                    "name": "GAITHERSBURG",
+                    "value": 439
+                },
+                {
+                    "name": "GARRETT PARK",
+                    "value": 5
+                },
+                {
+                    "name": "KENSINGTON",
+                    "value": 33
+                },
+                {
+                    "name": "LAYTONSVILLE",
+                    "value": 1
+                },
+                {
+                    "name": "POOLESVILLE",
+                    "value": 9
+                },
+                {
+                    "name": "ROCKVILLE",
+                    "value": 664
+                },
+                {
+                    "name": "TAKOMA PARK",
+                    "value": 159
+                }
+            ]
+        },
+        {
+            "name": "2019",
+            "value": 0,
+            "children": [
+                {
+                    "name": "GAITHERSBURG",
+                    "value": 461
+                },
+                {
+                    "name": "GARRETT PARK",
+                    "value": 7
+                },
+                {
+                    "name": "KENSINGTON",
+                    "value": 33
+                },
+                {
+                    "name": "LAYTONSVILLE",
+                    "value": 3
+                },
+                {
+                    "name": "POOLESVILLE",
+                    "value": 14
+                },
+                {
+                    "name": "ROCKVILLE",
+                    "value": 725
+                },
+                {
+                    "name": "TAKOMA PARK",
+                    "value": 128
+                }
+            ]
+        },
+        {
+            "name": "2021",
+            "value": 0,
+            "children": [
+                {
+                    "name": "GAITHERSBURG",
+                    "value": 436
+                },
+                {
+                    "name": "GARRETT PARK",
+                    "value": 1
+                },
+                {
+                    "name": "KENSINGTON",
+                    "value": 24
+                },
+                {
+                    "name": "LAYTONSVILLE",
+                    "value": 2
+                },
+                {
+                    "name": "POOLESVILLE",
+                    "value": 5
+                },
+                {
+                    "name": "ROCKVILLE",
+                    "value": 555
+                },
+                {
+                    "name": "TAKOMA PARK",
+                    "value": 111
+                }
+            ]
+        },
+        {
+            "name": "2023",
+            "value": 0,
+            "children": [
+                {
+                    "name": "GAITHERSBURG",
+                    "value": 314
+                },
+                {
+                    "name": "GARRETT PARK",
+                    "value": 3
+                },
+                {
+                    "name": "KENSINGTON",
+                    "value": 25
+                },
+                {
+                    "name": "LAYTONSVILLE",
+                    "value": 1
+                },
+                {
+                    "name": "POOLESVILLE",
+                    "value": 6
+                },
+                {
+                    "name": "ROCKVILLE",
+                    "value": 453
+                },
+                {
+                    "name": "TAKOMA PARK",
+                    "value": 80
+                }
+            ]
+        }
+    ]
+}
