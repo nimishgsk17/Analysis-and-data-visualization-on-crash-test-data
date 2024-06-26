@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+    
+        h1 {
+            font-size: 24px;
+            margin: 20px 0 10px;
+            color: #444;
+        }
+    
+        p {
+            margin: 10px 0;
+        }
+    
+        #PLOT1,
+        #PLOT2,
+        #PLOT3 {
+            margin: 20px 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+    
+        #PLOT1 h1,
+        #PLOT2 h1,
+        #PLOT3 h1 {
+            margin-top: 0;
+        }
+    
+        /* Styling for links */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    
+        /* Styling for code blocks */
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    
+        /* Add more styles as needed */
+    </style>
+    <script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+    <title>Infovis Parallel Coordinates</title>
+</head>
+
+<body>
+
+    <h1>A) Vehicle Type , Lighting affecting vehicle accidents</h1>
+    <div id='PLOT1'></div>
+
+    <p>From the provided parallel coordinates graph, which compares the count of accidents across different light conditions
+        and vehicle types, several trends can be inferred:</p>
+    
+    <p><strong>Light Conditions Impact on Accident Frequency:</strong><br>
+        Daytime sees the highest number of accidents for passenger cars, which is expected as there are typically more cars
+        on the road during this time. However, the difference between daytime and dark (with lights on) is not as pronounced
+        for sports utility vehicles, vans, and pickup trucks, suggesting that these types of vehicles may be involved in
+        accidents more evenly throughout different light conditions. The least number of accidents occur at dawn and dusk
+        across all vehicle types, which could be due to fewer vehicles on the road during these times.</p>
+    
+    <p><strong>Vehicle Type and Accident Correlation:</strong><br>
+        Passenger cars are consistently involved in more accidents than any other vehicle type across all light conditions,
+        likely due to their prevalence on the roads. Sports utility vehicles have a high count in accidents during the
+        daytime but a significantly lower count during dark (lights on), indicating that they might be safer to drive or
+        less commonly driven at night. Pickup trucks and vans show a similar pattern to each other, with counts decreasing
+        less dramatically from daytime to dark (lights on) compared to passenger cars and sports utility vehicles.</p>
+    
+    <p><strong>Public Transport Vehicles:</strong><br>
+        Transit buses and school buses have a lower incidence of accidents across all light conditions when compared to
+        personal vehicles. This could be due to the professional training of bus drivers, the larger size of the vehicle
+        which may deter risky behavior from other drivers, or the fact that they are on the road for fewer hours per day
+        compared to personal vehicles. Interestingly, the accident count for school buses is much higher during daytime 
+        than at night. This is probably due to the fact that most school timings are during the daytime.</p>
+    
+    <p><strong>Emergency Vehicles:</strong><br>
+        Police vehicles have a relatively lower count of accidents but seem to be involved in more accidents during the
+        night (with lights on), which could correlate with high-speed pursuits or emergency responses during these times.
+    </p>
+    
+    <p>The graph illustrates the relationship between light conditions and accident counts while considering the type of
+        vehicle involved. To make comprehensive inferences, it would be essential to consider external factors such as
+        traffic volume, weather conditions, and geographic location. Additionally, the actual number of vehicles on the road
+        for each category during the different light conditions would be needed to understand the accident rates properly.
+        Without this contextual information, the inferences drawn are speculative and based solely on the visual data
+        representation provided.</p>
+
+
+    <h1>B) Vehicle Type , Movement affecting vehicle accidents</h1>    
+    <div id='PLOT2'></div>
+
+    <p><strong>Constant Speed:</strong><br>
+        Passenger cars have the highest number of accidents while moving at a constant speed, likely due to their prevalence
+        on the roads. Sports utility vehicles, pickup trucks, and vans also have significant accidents at constant speed but
+        less so than passenger cars, reflecting their smaller numbers on the roads.</p>
+    
+    <p><strong>Slowing/Stopping:</strong><br>
+        There is a decrease in the number of accidents for all vehicle types during slowing or stopping movements. Transit
+        buses show a relatively high number of accidents while slowing or stopping, possibly due to their frequent stops and
+        the associated risk of rear-end collisions.</p>
+    
+    <p><strong>Stopped in Traffic:</strong><br>
+        Passenger cars and sports utility vehicles show a noticeable number of accidents when stopped in traffic,
+        highlighting their vulnerability to collisions in congested conditions.</p>
+    
+    <p><strong>Left Turn:</strong><br>
+        A significant number of accidents occur during left turns for all vehicle types, as this maneuver often involves
+        crossing oncoming traffic, leading to potential side-impact collisions.</p>
+    
+    <p><strong>Accelerating:</strong><br>
+        Fewer accidents occur during acceleration for all vehicles, possibly due to the shorter duration of this movement
+        and more attentive driving.</p>
+    
+    <p><strong>Right Turn:</strong><br>
+        Right turns seem to be safer, with fewer accidents reported for all vehicle types, likely because they generally
+        involve fewer conflicts with other traffic in right-hand drive jurisdictions.</p>
+    
+    <p><strong>Parked and Parking:</strong><br>
+        Minimal accidents are reported for vehicles that are parked or parking, as expected due to these being static or
+        low-speed maneuvers with a reduced chance of collision.</p>
+    
+    <p><strong>Special Cases - Public and Emergency Vehicles:</strong><br>
+        Transit and school buses display a distinct pattern with a lower overall number of accidents but higher incidences
+        in certain maneuvers like slowing/stopping and right turns, reflecting their unique operational patterns. Police
+        vehicles maintain a consistent but low count of accidents across all movements, possibly due to advanced driver
+        training and the use of warning equipment.</p>
+    
+    <p>It is crucial to consider that the raw count of accidents does not factor in the total number of vehicles or the
+        distance traveled. Additionally, without information on the severity of accidents or external factors such as
+        weather conditions, traffic signals, or road designs, these observations are based on the assumption that the data
+        is representative of the overall population of vehicles and their movements prior to accidents.</p>
+
+    <h1>C) Vehicle Type , Weather affecting vehicle accidents</h1>
+    <div id='PLOT3'></div>
+
+    <p><strong>Weather Conditions:</strong><br>
+        The highest number of accidents across all vehicle types occurs in clear weather, possibly due to increased traffic
+        and less cautious driving. Cloudy conditions result in a lower but still significant number of accidents. In foggy
+        and rainy conditions, accidents decrease further, suggesting increased driver caution or reduced traffic. Snowy
+        conditions see the lowest accident counts, likely due to drastically reduced traffic and more cautious driving
+        behavior.</p>
+    
+    <p><strong>Vehicle Types:</strong><br>
+        Passenger cars show the highest accident counts in all weather conditions, reflecting their higher numbers on the
+        roads. Sports utility and pickup trucks experience fewer accidents as weather conditions worsen, perhaps due to
+        better handling. Vans, transit buses, and school buses have lower overall accidents, potentially due to professional
+        driving and limited operation hours. Police vehicles maintain a consistently low accident count, likely due to
+        professional driving and vehicle readiness for diverse conditions.</p>
+    
+    <p><strong>General Observations:</strong><br>
+        There is a trend of decreasing accidents with worsening weather from cloudy to snowy conditions for all vehicle
+        types, which may be influenced by a reduction in traffic volume and heightened driving caution.</p>
+    
+    <p><strong>Justification:</strong><br>
+        The analysis assumes that the data accurately reflects the number of accidents without considering the total number
+        of vehicles on the road, which could impact the interpretation of accident rates. Thus, while poor weather might be
+        expected to increase accidents, actual counts may be lower due to fewer drivers and more cautious behavior.</p>
+
+    <script src = "Proto1.js">
+        
+    </script>
+</body>
+
+</HTML>
